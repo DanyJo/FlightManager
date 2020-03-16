@@ -1,0 +1,86 @@
+﻿@model FlightManager.Web.Models.Flights.FlightsEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center">Edit Flights</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="StartLocation" class="control-label"></label>
+                <input type="text" class="form-control" id="startLocation" placeholder="Location of department" 
+                       asp-for="StartLocation" value="@Model.StartLocation"/>
+                <span asp-validation-for="StartLocation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FinalLocation" class="control-label"></label>
+                <input type="text" class="form-control" id="departmentLocation" placeholder="Destination"  
+                       asp-for="FinalLocation" value="@Model.FinalLocation"/>
+                <span asp-validation-for="FinalLocation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TimeOfDepartment" class="control-label"></label>
+                <input type="datetime-local" class="form-control" id="timeOfDepartment" placeholder="Time of department"
+                       asp-for="TimeOfDepartment" value="@Model.TimeOfDepartment.ToString("s")" />
+                <span asp-validation-for="TimeOfDepartment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TimeOfLanding" class="control-label"></label>
+                <input type="datetime-local" class="form-control" id="timeOfLanding" placeholder="Time of landing"
+                       asp-for="TimeOfLanding" value="@Model.TimeOfLanding.ToString("s")"/>
+                <span asp-validation-for="TimeOfLanding" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PlaneType" class="control-label"></label>
+                <input type="text" class="form-control" id="planeType" placeholder="Type of the plane"
+                       asp-for="PlaneType" value="@Model.PlaneType" />
+                <span asp-validation-for="PlaneType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PlaneNumber" class="control-label"></label>
+                <input type="text" class="form-control" id="planeNumber" placeholder="Number of the plane"
+                       asp-for="PlaneNumber" value="@Model.PlaneNumber" />
+                <span asp-validation-for="PlaneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PilotName" class="control-label"></label>
+                <input type="text" class="form-control" id="pilotName" placeholder="Pilot name"
+                       asp-for="PilotName" value="@Model.PilotName" />
+                <span asp-validation-for="PilotName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EconomyClassCapacity" class="control-label"></label>
+                <input type="number" class="form-control" id="economyClassCapacity" placeholder="Max capacity for economy class"
+                       asp-for="EconomyClassCapacity" value="@Model.EconomyClassCapacity" />
+                <span asp-validation-for="EconomyClassCapacity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BuissnessClassCapacity" class="control-label"></label>
+                <input type="number" class="form-control" id="buissnessClassCapacity" placeholder="Max capacity for buissness class"
+                       asp-for="BuissnessClassCapacity" value="@Model.BuissnessClassCapacity" />
+                <span asp-validation-for="BuissnessClassCapacity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary bg-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

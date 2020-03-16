@@ -1,0 +1,77 @@
+﻿@model FlightManager.Web.Models.Flights.FlightsIndexViewModel
+
+
+
+<h1 class="text-center">Hello @this.User.Identity.Name!</h1>
+
+<h2>Curent flights</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Start Location
+            </th>
+            <th>
+                Destination
+            </th>
+            <th>
+                Time of Department
+            </th>
+            <th>
+                Flight duration
+            </th>
+            <th>
+                Economy class seats
+            </th>
+            <th>
+                Buissness class seats
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in this.Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfDepartment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelingTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EconomyClassCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuissnessClassCapacity)
+                </td>
+                <td class="d-flex justify-content-between">
+                    @if (this.User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-primary bg-success p-1" asp-controller="Flights" asp-action="Edit" asp-route-id="@item.Id"> Edit </a>
+                        <form asp-controller="Flights" asp-action="Delete" asp-route-id="@item.Id" method="post">
+
+                            <input type="submit" value="Delete" class="btn btn-primary bg-success p-1" />
+                        </form>
+                    }
+                    <a class="btn btn-primary bg-success p-1" asp-controller="Flights" asp-action="Read" asp-route-id="@item.Id"> Details </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <ul class="pagination">
+        @for (var i = 1; i <= Model.Pager.PagesCount; i++)
+        {
+            <li class="page-item  @(i == Model.Pager.CurrentPage ? "active" : "") ">
+                <a asp-route-Pager.CurrentPage="@i" class="page-link @(i == Model.Pager.CurrentPage ? "bg-success" : "")">@i</a>
+            </li>
+        }
+    </ul>
+</table>

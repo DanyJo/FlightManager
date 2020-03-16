@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FlightManager.Web.Models.View.UsersViewModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1 class="text-center">Users</h1>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EGN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EGN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td class="d-flex justify-content-between">
+                    <a class="btn btn-primary bg-success p-1" asp-controller="User" asp-action="Edit" asp-route-id="@item.Id"> Edit </a>
+                    <form asp-controller="User" asp-action="Delete" asp-route-id="@item.Id" method="post">
+
+                        <input type="submit" value="Delete" class="btn btn-primary bg-success p-1" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

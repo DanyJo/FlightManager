@@ -1,0 +1,8 @@
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\bin\Debug\netcoreapp3.1\FlightManager.EmailService.deps.json
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\bin\Debug\netcoreapp3.1\FlightManager.EmailService.dll
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\obj\Debug\netcoreapp3.1\FlightManager.EmailService.csprojAssemblyReference.cache
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\obj\Debug\netcoreapp3.1\FlightManager.EmailService.AssemblyInfoInputs.cache
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\obj\Debug\netcoreapp3.1\FlightManager.EmailService.AssemblyInfo.cs
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\bin\Debug\netcoreapp3.1\FlightManager.EmailService.pdb
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\obj\Debug\netcoreapp3.1\FlightManager.EmailService.dll
+D:\Later\C#\WEB\FlightManager\FlightManager.EmailService\obj\Debug\netcoreapp3.1\FlightManager.EmailService.pdb

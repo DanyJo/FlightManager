@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FlightManager.Web.Models.Flights.FlightsClientsViewModel>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1 class="text-center">Welcome @this.User.Identity.Name</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StartLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeOfDepartment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeOfLanding)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EconomyClassCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuissnessClassCapacity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfDepartment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfLanding)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EconomyClassCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuissnessClassCapacity)
+                </td>
+                <td>
+                    <a asp-controller="Flights" asp-action="Edit" asp-route-id="@item.Id"> Edit </a>
+                    <form asp-controller="Flights" asp-action="Delete" asp-route-id="@item.Id" method="post">
+
+                        <input type="submit" value="Delete" class="link" />
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

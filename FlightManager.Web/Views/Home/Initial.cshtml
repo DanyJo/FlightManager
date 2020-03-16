@@ -1,0 +1,81 @@
+﻿@model IEnumerable<FlightManager.Web.Models.Flights.FlightsClientsViewModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+@if (this.User.Identity.IsAuthenticated)
+{
+    <h1 class="text-center">Hello @this.User.Identity.Name!</h1>
+}
+else
+{
+    <h1 class="text-center">Hello traveler!</h1>
+}
+
+<h2>Curent flights</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StartLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeOfDepartment)
+            </th>
+            <th>
+                TravelingTime (hours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EconomyClassCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuissnessClassCapacity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfDepartment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelingTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EconomyClassCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuissnessClassCapacity)
+                </td>
+                <td>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-primary bg-success p-1" asp-controller="Flights" asp-action="Read" asp-route-id="@item.Id"> Details </a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (!this.User.Identity.IsAuthenticated)
+{
+    <hr>
+    <br>
+    <h1>Трябва да си логнат, за да създадеш регистрация</h1>
+}
+

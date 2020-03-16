@@ -1,0 +1,83 @@
+﻿@model FlightManager.Web.Models.Flights.FlightsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartLocation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartLocation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FinalLocation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FinalLocation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeOfDepartment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeOfDepartment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeOfLanding)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeOfLanding)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PlaneType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PlaneType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PlaneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PlaneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PilotName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PilotName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EconomyClassCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EconomyClassCapacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BuissnessClassCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BuissnessClassCapacity)
+        </dd>
+    </dl>
+</div>
+<div class="d-inline-block">
+    @if (this.Model.EconomyClassCapacity != 0 || this.Model.BuissnessClassCapacity != 0)
+    {
+        <a class="btn btn-primary bg-success p-1" asp-controller="Reservation" asp-action="Create" asp-route-id="@this.Model.Id">Reserve a seat for this flight</a>
+    }
+
+    @if (this.User.IsInRole("Admin"))
+    {
+        <a class="btn btn-primary bg-success p-1" asp-controller="Reservation" asp-action="Index" asp-route-id="@this.Model.Id">View all passengers</a>
+    }
+</div>

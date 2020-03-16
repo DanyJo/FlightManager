@@ -1,0 +1,73 @@
+﻿@model FlightManager.Web.Models.Reservations.ReservationCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center">Create</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <form asp-controller="Reservation" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FlightId" value="@this.Model.FlightId" />
+            <input type="hidden" asp-for="hasBuissnessSeats" value="@this.Model.hasBuissnessSeats" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input type="text" class="form-control" id="firstName" placeholder="First name" asp-for="FirstName" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleName" class="control-label"></label>
+                <input type="text" class="form-control" id="middleName" placeholder="Middle name" asp-for="MiddleName" />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last name" asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input type="email" class="form-control" id="email" placeholder="Email" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EGN" class="control-label"></label>
+                <input type="text" class="form-control" id="egn" placeholder="EGN" asp-for="EGN" />
+                <span asp-validation-for="EGN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number" asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nationality" class="control-label"></label>
+                <input type="text" class="form-control" id="nationality" placeholder="Nationality" asp-for="Nationality" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                @if (this.Model.hasBuissnessSeats)
+                {
+                    <label asp-for="isBuissnessClass" class="control-label">Buissness class</label>
+                    <input type="checkbox" class="form-control" id="isBuissnessClass" asp-for="isBuissnessClass" />
+                    <span asp-validation-for="isBuissnessClass" class="text-danger"></span>
+                }
+                else
+                {
+                    <h4>The aren't any buissness class seats left</h4>
+                }
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Reserve" class="btn btn-primary bg-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
